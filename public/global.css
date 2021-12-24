@@ -6,7 +6,7 @@ html, body {
 	--background-color: rgb(51, 50, 50);
 	--foreground-color: rgb(201, 191, 191);
 
-	--scorecell-height: 30px;
+	--scorecell-height: 32px;
 	--scorecell-vrtmrg: 1px;
 	--totalcell-height: 21px;
 	--totalcell-mrgtop: 3px;
