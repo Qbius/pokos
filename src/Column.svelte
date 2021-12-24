@@ -44,15 +44,15 @@
         width: 50px;
         margin-top: 1px;
         margin-bottom: 1px;
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 3px;
+        margin-right: 3px;
         text-align: center;
         background-color: var(--foreground-color);
     }
 
     .cell-total {
-        margin-top: 5px;
-        margin-bottom: 20px;
+        margin-top: 3px;
+        margin-bottom: 10px;
         font-weight: 1000;
         color: var(--foreground-color);
     }

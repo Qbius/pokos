@@ -53,7 +53,7 @@
 	}
 
 	#scores {
-		font-size: 32px;
+		font-size: 24px;
 		color: var(--foreground-color);
 		display: flex;
 		justify-content: space-evenly;
