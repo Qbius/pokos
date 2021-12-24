@@ -11,7 +11,7 @@
 			{#if i > 0 && i % 2 === 0}
 				<div id="rowlabels">
 					<div style="height: 30px;"></div>
-					{#each [...first, ' ', ...secnd, ' '] as rowlabel}
+					{#each [...first, ' ', ...secnd] as rowlabel}
 					<span
 						style="
 							text-align: center;
@@ -92,6 +92,7 @@
 
 	.fscoring-span {
 		font-weight: 1000;
+		text-align: center;
 	}
 
 	@media (min-width: 640px) {
