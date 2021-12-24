@@ -1,6 +1,7 @@
 <script>
 	import Column from './Column.svelte';
-	import {first, secnd, l_scores, m_scores} from './sections.js';
+	import Scorer from './Scorer.svelte';
+	import {first, secnd} from './sections.js';
 </script>
 
 
@@ -25,25 +26,14 @@
 			{#each [...Array(6).keys()] as i}
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
-			prev={(i > 1) ? ((i % 2 === 0) ? l_scores : m_scores)[Math.floor((i - 2) / 2)] : 0}
 			total_index={Math.floor(i / 2)}
 			premiums={i > 1}
 			/>
 			{/each}
 		</div>
 		<div id="scores">
-			<div class="fscoring-col">
-				<span>L</span>
-				<span class="fscoring-span">
-					{$l_scores.reduce((a, b) => a + Math.round(b), 0)}
-				</span>
-			</div>
-			<div class="fscoring-col">
-				<span>M</span>
-				<span class="fscoring-span">
-					{$m_scores.reduce((a, b) => a + Math.round(b), 0)}
-				</span>
-			</div>
+			<Scorer label="L"/>
+			<Scorer label="M"/>
 		</div>
 	</div>
 </main>
@@ -60,7 +50,6 @@
 	#content {
 		margin: auto;
 		display: flex;
-		flex-direction: column;
 	}
 
 	#rowlabels {
@@ -74,24 +63,13 @@
 	}
 
 	#scores {
-		font-size: 24px;
 		color: var(--foreground-color);
 		display: flex;
+		flex-direction: column;
 		justify-content: space-evenly;
 		align-items: center;
 		margin-bottom: 10px;
-	}
-
-	.fscoring-col {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.fscoring-span {
-		margin-left: 15px;
-		font-weight: 1000;
-		text-align: center;
+		margin-left: 5px;
 	}
 
 	@media (min-width: 640px) {
