@@ -7,24 +7,22 @@
 <main>
 	<div id="content">
 		<div id="columns">
+			<div id="rowlabels">
+				<div style="height: 1px;"></div>
+				{#each [...first, ...secnd] as rowlabel}
+				<span
+					style="
+						text-align: center;
+						margin-left: 5px;
+						margin-right: 2px;
+						height: var(--scorecell-height);
+						margin-top: var(--scorecell-vrtmrg);
+						margin-bottom: var(--scorecell-vrtmrg);
+					"
+				>{rowlabel}</span>
+				{/each}
+			</div>
 			{#each [...Array(6).keys()] as i}
-			{#if i > 0 && i % 2 === 0}
-				<div id="rowlabels">
-					<div style="height: 1px;"></div>
-					{#each [...first, ...secnd] as rowlabel}
-					<span
-						style="
-							text-align: center;
-							margin-left: 5px;
-							margin-right: 2px;
-							height: var(--scorecell-height);
-							margin-top: var(--scorecell-vrtmrg);
-							margin-bottom: var(--scorecell-vrtmrg);
-						"
-					>{rowlabel}</span>
-					{/each}
-				</div>
-			{/if}
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
 			prev={(i > 1) ? ((i % 2 === 0) ? l_scores : m_scores)[Math.floor((i - 2) / 2)] : 0}
@@ -86,12 +84,12 @@
 
 	.fscoring-col {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
 
 	.fscoring-span {
+		margin-left: 15px;
 		font-weight: 1000;
 		text-align: center;
 	}
