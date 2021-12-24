@@ -7,21 +7,24 @@
 <main>
 	<div id="content">
 		<div id="columns">
-			<div id="rowlabels">
-				<div style="height: 30px;"></div>
-				{#each [...first, ' ', ...secnd, ' '] as rowlabel}
-				<span
-					style="
-						text-align: right;
-						margin-right: 3px;
-						height: {(rowlabel !== ' ') ? 'var(--scorecell-height)' : '28px'};
-						margin-top: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtop'});
-						margin-bottom: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtbot'});
-					"
-				>{rowlabel}</span>
-				{/each}
-			</div>
 			{#each [...Array(6).keys()] as i}
+			{#if i > 0 && i % 2 === 0}
+				<div id="rowlabels">
+					<div style="height: 30px;"></div>
+					{#each [...first, ' ', ...secnd, ' '] as rowlabel}
+					<span
+						style="
+							text-align: center;
+							margin-left: 5px;
+							margin-right: 2px;
+							height: {(rowlabel !== ' ') ? 'var(--scorecell-height)' : '28px'};
+							margin-top: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtop'});
+							margin-bottom: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtbot'});
+						"
+					>{rowlabel}</span>
+					{/each}
+				</div>
+			{/if}
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
 			prev={(i > 1) ? ((i % 2 === 0) ? l_scores : m_scores)[Math.floor((i - 2) / 2)] : 0}
