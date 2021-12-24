@@ -21,8 +21,8 @@
     $: total = ((label === 'L') ? $l_scores : $m_scores)[total_index];
 </script>
 
-<div id="component">
-    <span>{label}</span>
+<div id="component" style="margin-left: {(label === 'L') ? '5' : '2'}px;">
+    <span class="cell-toplabel">{label}</span>
     {#each first as _section, index}
     <input class="cell-input" type="number" bind:value={first_score_raw[index]}>
     {/each}
@@ -38,33 +38,38 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-right: 1px;
+    }
+
+    .cell-toplabel {
+        color: var(--foreground-color);
     }
 
     .cell-input {
         width: 50px;
-        margin-top: 1px;
-        margin-bottom: 1px;
-        margin-left: 3px;
-        margin-right: 3px;
+        margin-top: var(--scorecell-vrtmrg);
+        margin-bottom: var(--scorecell-vrtmrg);
         text-align: center;
         background-color: var(--foreground-color);
+        height: var(--scorecell-height);
     }
 
     .cell-total {
-        margin-top: 3px;
-        margin-bottom: 10px;
+        height: var(--totalcell-height);
+        margin-top: var(--totalcell-mrgtop);
+        margin-bottom: var(--totalcell-mrgbot);
         font-weight: 1000;
         color: var(--foreground-color);
     }
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+        -webkit-appearance: none;
+        margin: 0;
     }
 
 
     input[type=number] {
-    -moz-appearance: textfield;
+        -moz-appearance: textfield;
     }
 </style>

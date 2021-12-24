@@ -5,6 +5,14 @@ html, body {
 	
 	--background-color: rgb(51, 50, 50);
 	--foreground-color: rgb(201, 191, 191);
+
+	--scorecell-height: 36px;
+	--scorecell-vrtmrg: 1px;
+	--totalcell-height: 21px;
+	--totalcell-mrgtop: 3px;
+	--totalcell-mrgbot: 10px;
+
+	background-color: var(--background-color);
 }
 
 body {

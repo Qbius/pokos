@@ -1,11 +1,26 @@
 <script>
 	import Column from './Column.svelte';
-	import {l_scores, m_scores} from './sections.js';
+	import {first, secnd, l_scores, m_scores} from './sections.js';
 </script>
+
 
 <main>
 	<div id="content">
-		<div id="columns">		
+		<div id="columns">
+			<div id="rowlabels">
+				<div style="height: 30px;"></div>
+				{#each [...first, ' ', ...secnd, ' '] as rowlabel}
+				<span
+					style="
+						text-align: right;
+						margin-right: 3px;
+						height: {(rowlabel !== ' ') ? 'var(--scorecell-height)' : '28px'};
+						margin-top: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtop'});
+						margin-bottom: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtbot'});
+					"
+				>{rowlabel}</span>
+				{/each}
+			</div>
 			{#each [...Array(6).keys()] as i}
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
@@ -39,13 +54,18 @@
 		align-items: center;
 		width: 100%;
 		height: 100%;
-		background-color: var(--background-color);
 	}
 
 	#content {
 		margin: auto;
 		display: flex;
 		flex-direction: column;
+	}
+
+	#rowlabels {
+		display: flex;
+		flex-direction: column;
+		color: var(--foreground-color);
 	}
 
 	#columns {
