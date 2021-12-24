@@ -10,16 +10,16 @@
 			{#each [...Array(6).keys()] as i}
 			{#if i > 0 && i % 2 === 0}
 				<div id="rowlabels">
-					<div style="height: 30px;"></div>
-					{#each [...first, ' ', ...secnd] as rowlabel}
+					<div style="height: 1px;"></div>
+					{#each [...first, ...secnd] as rowlabel}
 					<span
 						style="
 							text-align: center;
 							margin-left: 5px;
 							margin-right: 2px;
-							height: {(rowlabel !== ' ') ? 'var(--scorecell-height)' : '28px'};
-							margin-top: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtop'});
-							margin-bottom: var({(rowlabel !== ' ') ? '--scorecell-vrtmrg' : '--totalcell-mrgtbot'});
+							height: var(--scorecell-height);
+							margin-top: var(--scorecell-vrtmrg);
+							margin-bottom: var(--scorecell-vrtmrg);
 						"
 					>{rowlabel}</span>
 					{/each}

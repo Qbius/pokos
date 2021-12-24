@@ -11,7 +11,8 @@
     $: first_score = first_score_raw.map(n => n ? n : 0);
     $: secnd_score = secnd_score_raw.map(n => n ? n : 0);
     $: first_raw = first_score.reduce((a, b) => a + Math.round(b), 0);
-    $: first_total = first_raw + (premiums ? Math.sign(first_raw) * 50 : 0);
+    $: first_bonus = (premiums ? Math.sign(first_raw) * 50 : 0);
+    $: first_total = first_raw + first_bonus;
     $: ((label === 'L') ? l_scores : m_scores).update(scr => {
         console.log(secnd_score.every(s => s > 0))
         if (scr)
@@ -19,14 +20,16 @@
         return scr
     });
     $: total = ((label === 'L') ? $l_scores : $m_scores)[total_index];
+    $: olcolor = (first_bonus > 0) ? 'green' : (first_bonus < 0) ? 'red' : 'transparent';
 </script>
 
 <div id="component" style="margin-left: {(label === 'L') ? '5' : '2'}px;">
-    <span class="cell-toplabel">{label}</span>
+    {#if premiums}
+    <div style="width: var(--scorecell-width); height: 156px; position: absolute; z-index: 2; left: 0; top: 0; background-color: {olcolor}; opacity: 0.3; pointer-events: none;"/>
+    {/if}
     {#each first as _section, index}
     <input class="cell-input" type="number" bind:value={first_score_raw[index]}>
     {/each}
-    <span class="cell-total">{first_total}</span>
     {#each secnd as _section, index}
     <input class="cell-input" type="number" bind:value={secnd_score_raw[index]}>
     {/each}
@@ -35,18 +38,15 @@
 
 <style>
     #component {
+        position:relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-right: 1px;
     }
 
-    .cell-toplabel {
-        color: var(--foreground-color);
-    }
-
     .cell-input {
-        width: 50px;
+        width: var(--scorecell-width);
         margin-top: var(--scorecell-vrtmrg);
         margin-bottom: var(--scorecell-vrtmrg);
         text-align: center;
