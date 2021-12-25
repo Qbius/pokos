@@ -27,7 +27,6 @@
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
 			total_index={Math.floor(i / 2)}
-			premiums={i > 1}
 			/>
 			{/each}
 		</div>
