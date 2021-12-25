@@ -23,12 +23,12 @@
 				>{rowlabel}</span>
 				{/each}
 			</div>
-			{#each [...Array(6).keys()] as i}
+			{#each [...Array(6).keys()] as i} {#if i >= 2}
 			<Column
 			label={(i % 2 === 0) ? 'L' : 'M'}
 			total_index={Math.floor(i / 2)}
 			/>
-			{/each}
+			{/if} {/each}
 		</div>
 		<div id="scores">
 			<Scorer label="L"/>
